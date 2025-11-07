@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Validation - Register</title>
+    <style>
+        form div{
+            display: flex;
+            gap:15px;
+            margin: 0 0 15px 0;
+        }
+
+        form label{
+            width: 150px;
+        }
+
+        .error{
+            color: #f00;
+        }
+    </style>
+</head>
+<body>
+<form th:action="@{register}" method="post" th:object="${dto}">
+    <div class="error" th:errors="${dto}"></div>
+
+    <div class="error" th:errors="*{username}"></div>
+    <div>
+        <label for="username">Username: </label>
+        <input type="text" id="username" name="username" th:field="*{username}">
+    </div>
+    <div class="error" th:errors="*{password}"></div>
+    <div>
+        <label for="password">Password: </label>
+        <input type="password" id="password" name="password" th:field="*{password}">
+    </div>
+    <div>
+        <label for="confirmPassword">Confirm Password: </label>
+        <input type="password" id="confirmPassword" name="confirmPassword" th:field="*{confirmPassword}">
+    </div>
+
+    <div class="error" th:errors="*{firstName}"></div>
+    <div>
+        <label for="firstName">First Name: </label>
+        <input type="text" id="firstName" name="firstName" th:field="*{firstName}">
+    </div>
+    <div class="error" th:errors="*{lastName}"></div>
+    <div>
+        <label for="lastName">Last Name: </label>
+        <input type="text" id="lastName" name="lastName" th:field="*{lastName}">
+    </div>
+    <div class="error" th:errors="*{birthDate}"></div>
+    <div>
+        <label for="birthDate">Birth Date: </label>
+        <input type="date" id="birthDate" name="birthDate" th:value="*{birthDate}">
+    </div>
+    <div class="error" th:errors="*{email}"></div>
+    <div>
+        <label for="email">Email: </label>
+        <input type="text" id="email" name="email" th:field="*{email}">
+    </div>
+    <div class="error" th:errors="*{phoneNumber}"></div>
+    <div>
+        <label for="phoneNumber">Phone Number: </label>
+        <input type="text" id="phoneNumber" name="phoneNumber" th:field="*{phoneNumber}">
+    </div>
+    <div class="error" th:errors="*{address}"></div>
+    <div>
+        <label for="address">Address: </label>
+        <input type="text" id="address" name="address" th:field="*{address}">
+    </div>
+    <div class="error" th:errors="*{postalCode}"></div>
+    <div>
+        <label for="postalCode">Postal Code: </label>
+        <input type="text" id="postalCode" name="postalCode" th:field="*{postalCode}">
+    </div>
+    <div class="error" th:errors="*{isMarried}"></div>
+    <div>
+        <label for="isMarried">Married: </label>
+        <input type="checkbox" id="isMarried" name="isMarried" th:field="*{isMarried}">
+    </div>
+    <div class="error" th:errors="*{yearsExperience}"></div>
+    <div>
+        <label for="yearsExperience">Years of Experience: </label>
+        <input type="number" id="yearsExperience" name="yearsExperience" th:field="*{yearsExperience}">
+    </div>
+    <div class="error" th:errors="*{totalChildren}"></div>
+    <div>
+        <label for="totalChildren">Total Children: </label>
+        <input type="number" id="totalChildren" name="totalChildren" th:field="*{totalChildren}">
+    </div>
+    <div class="error" th:errors="*{estimatedSalary}"></div>
+    <div>
+        <label for="estimatedSalary">Estimated Salary: </label>
+        <input type="text" id="estimatedSalary" name="estimatedSalary" th:field="*{estimatedSalary}">
+    </div>
+
+    <button>Register</button>
+</form>
+</body>
+</html>

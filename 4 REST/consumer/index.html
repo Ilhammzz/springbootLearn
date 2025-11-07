@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Subject Management - REST API</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Subject Management System</h1>
+
+      <!-- Add New Subject Button -->
+      <button class="btn create-btn">Add New Subject</button>
+
+      <!-- Subjects Table -->
+      <table>
+        <thead>
+          <tr>
+            <th>Actions</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Credit</th>
+            <th>Price</th>
+            <th>Active</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="6" class="loading">Loading subjects...</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="6">
+              <div class="pagination">
+                <div class="page-info">
+                  Page <span class="current-page">1</span> of
+                  <span class="last-page">1</span>
+                </div>
+                <div class="page-numbers"></div>
+              </div>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <!-- Upsert Modal (Create/Update) -->
+      <div id="upsertModal" class="modal">
+        <div class="modal-content">
+          <span class="upsert-close">&times;</span>
+          <h2>Subject Form</h2>
+          <form class="upsert-form">
+            <div class="form-group">
+              <label for="idUpsert">ID *</label>
+              <input
+                type="text"
+                id="idUpsert"
+                name="idUpsert"
+                maxlength="2"
+                placeholder="2 characters"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="nameUpsert">Name *</label>
+              <input
+                type="text"
+                id="nameUpsert"
+                name="nameUpsert"
+                maxlength="50"
+                placeholder="Subject name"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="descriptionUpsert">Description</label>
+              <textarea
+                id="descriptionUpsert"
+                name="descriptionUpsert"
+                rows="3"
+                placeholder="Subject description"
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="creditUpsert">Credit *</label>
+              <input
+                type="number"
+                id="creditUpsert"
+                name="creditUpsert"
+                min="1"
+                max="6"
+                placeholder="1-6"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="priceUpsert">Price *</label>
+              <input
+                type="number"
+                id="priceUpsert"
+                name="priceUpsert"
+                step="0.01"
+                min="0"
+                placeholder="0.00"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="levelUpsert">Level *</label>
+              <select id="levelUpsert" name="levelUpsert" required>
+                <option value="">Select Level</option>
+                <option value="BAC">Bachelor</option>
+                <option value="MAS">Master</option>
+                <option value="PHD">Doctorate</option>
+              </select>
+            </div>
+
+            <div class="form-group" id="activeUpsertGroup">
+              <label for="activeUpsert">Active *</label>
+              <input type="checkbox" id="activeUpsert" name="activeUpsert" />
+            </div>
+
+            <div class="form-actions">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                onclick="document.getElementById('upsertModal').style.display='none'"
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                id="upsertSubmitBtn"
+                class="btn btn-primary"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Delete Confirmation Modal -->
+      <div id="deleteModal" class="modal">
+        <div class="modal-content">
+          <span class="delete-close">&times;</span>
+          <h2>Delete Confirmation</h2>
+          <p>Are you sure you want to delete this subject?</p>
+          <form id="deleteForm">
+            <input id="idDelete" type="hidden" />
+            <div class="form-actions">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                onclick="document.getElementById('deleteModal').style.display='none'"
+              >
+                Cancel
+              </button>
+              <button type="submit" id="deleteConfirmBtn" class="btn btn-danger">Delete</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- IMPORTANT: Use type="module" for ES6 modules -->
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>
